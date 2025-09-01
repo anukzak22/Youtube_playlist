@@ -98,7 +98,18 @@ python main.py
 * **Rate Limits:** Making too many requests in a short time may trigger temporary API rate limits.
 * **Test Users:** Only accounts added as Test Users can authorize the OAuth app if it is not published
 
-## 7. Folder Structure Example
+
+## 7. Additanl Notes
+* **Token Expiration**:  
+  Sometimes the saved `token.pickle` becomes invalid (expired or revoked). If you see an error like `invalid_grant: Token has been expired or revoked`, you need to refresh your credentials:
+  1. Run the helper script `auth_refresh.py`:
+     ```bash
+     python auth_refresh.py
+     ```
+  2. A browser window will open. Log in with the same Google account.
+  3. A new `token.pickle` will be generated, and you can run `main.py` again.
+
+## 8. Folder Structure Example
 
 ```
 youtube_playlist/
@@ -106,7 +117,10 @@ youtube_playlist/
 ├─ main.py
 ├─ client_secret.json
 ├─ songs.txt
+├─last_added.txt
+├─authrefresh.py
 └─ token.pickle  # generated after first run
+
 ```
 
 ---
